@@ -1,0 +1,445 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Arte Moderno</title>
+    <style>
+        *{
+          margin:0;
+          padding:0;
+          box-sizing:border-box;
+          font-family: Arial, Helvetica, sans-serif;
+        }
+
+        html{
+          scroll-behavior:smooth;
+        }
+
+        body{
+          background: #1e1e1e;
+          color: #222;
+        }
+
+        .header{
+          position: sticky;
+          top: 0;
+          z-index: 1000;
+          background: linear-gradient(135deg, #e34f26, #f16529);
+          color: white;
+          padding: 18px 20px;
+          box-shadow: 0 4px 15px rgba(0,0,0,0.25);
+        }
+
+        .logo{
+          display:flex;
+          align-items:center;
+          gap:15px;
+          margin-bottom:15px;
+        }
+
+        .logo img{
+          width:60px;
+          height:60px;
+          object-fit:contain;
+          background:white;
+          border-radius:14px;
+          padding:8px;
+        }
+
+        .logo h1{
+          font-size:2rem;
+        }
+
+        .logo p{
+          font-size:0.95rem;
+        }
+
+        .nav{
+          display:flex;
+          flex-wrap:wrap;
+          gap:10px;
+        }
+
+        .nav a{
+          text-decoration:none;
+          color:white;
+          background: rgba(255,255,255,0.15);
+          padding:10px 14px;
+          border-radius:12px;
+          font-weight:bold;
+          transition:0.3s;
+        }
+
+        .nav a:hover{
+          background: rgba(255,255,255,0.28);
+        }
+
+        .hero{
+          min-height:90vh;
+          display:grid;
+          grid-template-columns: 1fr 1fr;
+          align-items:center;
+          gap:30px;
+          padding:50px 25px;
+          background: linear-gradient(135deg, #fff3ef, #ffffff);
+        }
+
+        .hero-texto h2{
+          font-size:3rem;
+          color:#e34f26;
+          margin-bottom:15px;
+        }
+
+        .hero-texto p{
+          line-height:1.7;
+          font-size:1.05rem;
+          margin-bottom:20px;
+          color:#333;
+        }
+
+        .badge{
+          display:inline-block;
+          background:#e34f26;
+          color:white;
+          padding:8px 14px;
+          border-radius:999px;
+          margin-bottom:15px;
+          font-weight:bold;
+        }
+
+        .btn{
+          display:inline-block;
+          text-decoration:none;
+          background:#2d2d2d;
+          color:white;
+          padding:12px 20px;
+          border-radius:12px;
+          font-weight:bold;
+        }
+
+        .hero-imagen{
+          display:flex;
+          justify-content:center;
+        }
+
+        .hero-imagen img{
+          width:100%;
+          max-width:300px;
+          object-fit:contain;
+        }
+
+        .seccion{
+          padding:50px 25px;
+          background:#f7f7f7;
+          border-top:1px solid #ddd;
+        }
+
+        .card{
+          max-width:1000px;
+          margin:auto;
+          background:white;
+          border-radius:22px;
+          padding:25px;
+          box-shadow:0 8px 20px rgba(0,0,0,0.08);
+          border-left:8px solid #e34f26;
+        }
+
+        .card h2{
+          color:#e34f26;
+          margin-bottom:15px;
+          font-size:2rem;
+        }
+
+        .card h3{
+          color:#e34f26;
+          margin-bottom:10px;
+        }
+
+        .card p,
+        .card li{
+          line-height:1.7;
+          color:#333;
+        }
+
+        .card img{
+          width:100%;
+          max-width:260px;
+          display:block;
+          margin:15px auto;
+        }
+
+        .codigo{
+          background:#1f1f1f;
+          color:white;
+          padding:18px;
+          border-radius:14px;
+          margin:18px 0;
+          font-family: Consolas, monospace;
+          white-space: pre-line;
+          overflow:auto;
+        }
+
+        .grid{
+          display:grid;
+          grid-template-columns: 1fr 1fr;
+          gap:15px;
+          margin-top:20px;
+        }
+
+        .mini-card{
+          background:#fff7f3;
+          border:1px solid #f1c3b5;
+          border-radius:16px;
+          padding:18px;
+        }
+
+        .demo-form{
+          display:grid;
+          gap:12px;
+          margin-top:20px;
+        }
+
+        .demo-form label{
+          font-weight:bold;
+          color:#333;
+        }
+
+        .demo-form input,
+        .demo-form textarea{
+          width:100%;
+          padding:12px;
+          border:1px solid #ccc;
+          border-radius:12px;
+        }
+
+        .demo-form button{
+          border:none;
+          background:#e34f26;
+          color:white;
+          padding:12px;
+          border-radius:12px;
+          font-weight:bold;
+          cursor:pointer;
+        }
+
+        .footer{
+          background:#2d2d2d;
+          color:white;
+          text-align:center;
+          padding:18px;
+          font-weight:bold;
+        }
+
+        @media (max-width: 900px){
+          .hero{
+            grid-template-columns:1fr;
+            text-align:center;
+          }
+
+          .grid{
+            grid-template-columns:1fr;
+          }
+        }
+    </style>
+</head>
+<body>
+
+<header class="header">
+    <div class="logo">
+        <img src="img/arte-logo.png" alt="Logo Arte Moderno">
+        <div>
+            <h1>ARTE MODERNO</h1>
+            <p>Expresión y creatividad del siglo XX</p>
+        </div>
+    </div>
+
+    <nav class="nav">
+        <a href="#inicio">Inicio</a>
+        <a href="#que-es">¿Qué es?</a>
+        <a href="#caracteristicas">Características</a>
+        <a href="#corrientes">Corrientes</a>
+        <a href="#artistas">Artistas</a>
+        <a href="#obras">Obras</a>
+        <a href="#galeria">Galería</a>
+        <a href="#conclusion">Conclusión</a>
+    </nav>
+</header>
+
+<main>
+
+    <section id="inicio" class="hero">
+        <div class="hero-texto">
+            <span class="badge">Tema de investigación</span>
+            <h2>Conociendo el Arte Moderno</h2>
+            <p>
+                Esta página está dedicada a explicar qué es el Arte Moderno, sus características,
+                sus principales corrientes y su importancia en la historia cultural.
+            </p>
+            <a href="#que-es" class="btn">Comenzar</a>
+        </div>
+
+        <div class="hero-imagen">
+            <img src="img/arte-principal.png" alt="Pintura moderna">
+        </div>
+    </section>
+
+    <section id="que-es" class="seccion">
+        <article class="card">
+            <h2>¿Qué es el Arte Moderno?</h2>
+            <img src="img/arte-moderno.png" alt="Arte Moderno">
+            <p>
+                El Arte Moderno es un movimiento cultural y artístico que surgió a finales del siglo XIX y se desarrolló durante el siglo XX.
+                Se caracteriza por romper con las reglas y tradiciones del arte académico, buscando nuevas formas de expresión.
+                No se trata solo de copiar la realidad, sino de mostrar emociones, ideas y visiones personales.
+                Es importante porque marcó un antes y un después en la historia del arte, dando libertad al artista para crear de formas innovadoras.
+            </p>
+        </article>
+    </section>
+
+    <section id="caracteristicas" class="seccion">
+        <article class="card">
+            <h2>Características principales</h2>
+            <img src="img/caracteristicas.png" alt="Características">
+            <p>
+                <strong>• Libertad de creación:</strong> El artista decide cómo representar lo que ve o siente.<br>
+                <strong>• Uso del color:</strong> Se usa el color de forma expresiva, no necesariamente realista.<br>
+                <strong>• Nuevas técnicas:</strong> Se experimenta con materiales y estilos diferentes.<br>
+                <strong>• Subjetividad:</strong> Importa más lo que el artista siente que lo que realmente es.<br>
+                <strong>• Rompimiento con lo clásico:</strong> Se dejan atrás las reglas estrictas del pasado.
+            </p>
+        </article>
+    </section>
+
+    <section id="corrientes" class="seccion">
+        <article class="card">
+            <h2>Principales corrientes</h2>
+            <img src="img/corrientes.png" alt="Corrientes Artísticas">
+            <div class="grid">
+                <div class="mini-card">
+                    <h3>Impresionismo</h3>
+                    <p>Se enfoca en capturar la luz y el momento, con pinceladas rápidas y colores vivos.</p>
+                </div>
+                <div class="mini-card">
+                    <h3>Cubismo</h3>
+                    <p>Descompone las formas en figuras geométricas y muestra varios ángulos a la vez.</p>
+                </div>
+                <div class="mini-card">
+                    <h3>Surrealismo</h3>
+                    <p>Representa el mundo de los sueños y el subconsciente, con imágenes fantásticas.</p>
+                </div>
+                <div class="mini-card">
+                    <h3>Expresionismo</h3>
+                    <p>Transmite emociones y sentimientos intensos, deformando las formas.</p>
+                </div>
+                <div class="mini-card">
+                    <h3>Abstracto</h3>
+                    <p>No representa objetos reales, solo formas, colores y líneas.</p>
+                </div>
+                <div class="mini-card">
+                    <h3>Dadaísmo</h3>
+                    <p>Movimiento rebelde que cuestionaba el arte tradicional y la lógica.</p>
+                </div>
+            </div>
+        </article>
+    </section>
+
+    <section id="artistas" class="seccion">
+        <article class="card">
+            <h2>Artistas destacados</h2>
+            <img src="img/artistas.png" alt="Artistas">
+            <div class="grid">
+                <div class="mini-card">
+                    <h3>Pablo Picasso</h3>
+                    <p>Padre del Cubismo, uno de los artistas más influyentes de la historia.</p>
+                </div>
+                <div class="mini-card">
+                    <h3>Vincent van Gogh</h3>
+                    <p>Referente del Postimpresionismo, famoso por sus pinceladas y colores intensos.</p>
+                </div>
+                <div class="mini-card">
+                    <h3>Salvador Dalí</h3>
+                    <p>Máximo exponente del Surrealismo, conocido por sus obras oníricas.</p>
+                </div>
+                <div class="mini-card">
+                    <h3>Claude Monet</h3>
+                    <p>Principal representante del Impresionismo, experto en pintar la luz natural.</p>
+                </div>
+                <div class="mini-card">
+                    <h3>Wassily Kandinsky</h3>
+                    <p>Pionero de la pintura abstracta, relacionaba el arte con la música.</p>
+                </div>
+                <div class="mini-card">
+                    <h3>Diego Rivera</h3>
+                    <p>Gran muralista que combinó modernidad con temas sociales y culturales.</p>
+                </div>
+            </div>
+        </article>
+    </section>
+
+    <section id="obras" class="seccion">
+        <article class="card">
+            <h2>Obras más famosas</h2>
+            <img src="img/obras.png" alt="Obras de Arte">
+            <p>
+                Algunas obras que marcaron la historia del Arte Moderno son:<br>
+                <strong>• La noche estrellada:</strong> Obra de Van Gogh, llena de emoción y movimiento.<br>
+                <strong>• Guernica:</strong> Pintura de Picasso que denuncia la guerra.<br>
+                <strong>• La persistencia de la memoria:</strong> Los relojes derretidos de Dalí.<br>
+                <strong>• Impresión, sol naciente:</strong> La obra que dio nombre al Impresionismo.<br>
+                <strong>• El beso:</strong> Obra de Klimt, llena de ornamentación y belleza.
+            </p>
+        </article>
+    </section>
+
+    <section id="galeria" class="seccion">
+        <article class="card">
+            <h2>Galería y Multimedia</h2>
+            <p>
+                El Arte Moderno se puede apreciar a través de pinturas, esculturas, fotografías y hasta instalaciones.
+                Gracias a la tecnología hoy podemos conocer y difundir estas obras en cualquier parte del mundo.
+            </p>
+
+            <div class="grid">
+                <div class="mini-card">
+                    <h3>Imágenes</h3>
+                    <p>Representaciones visuales que muestran la visión del artista.</p>
+                </div>
+                <div class="mini-card">
+                    <h3>Audio</h3>
+                    <p>Podcasts y entrevistas sobre la historia y significado de las obras.</p>
+                </div>
+                <div class="mini-card">
+                    <h3>Video</h3>
+                    <p>Documentales que explican cómo se crearon las grandes obras.</p>
+                </div>
+                <div class="mini-card">
+                    <h3>Valor cultural</h3>
+                    <p>Importancia de preservar y difundir el arte como patrimonio humano.</p>
+                </div>
+            </div>
+
+            <form class="demo-form">
+                <label for="nombre">Tu artista favorito</label>
+                <input type="text" id="nombre" placeholder="Escribe un nombre...">
+
+                <label for="correo">Tu correo</label>
+                <input type="email" id="correo" placeholder="ejemplo@email.com">
+
+                <label for="comentario">¿Qué te gusta más del arte?</label>
+                <textarea id="comentario" rows="4" placeholder="Escribe aquí..."></textarea>
+
+                <button type="button">Enviar</button>
+            </form>
+        </article>
+    </section>
+
+    <section id="conclusion" class="seccion">
+        <article class="card">
+            <h2>Conclusión</h2>
+            <p>
+                En conclusión, el Arte Moderno fue una etapa de gran cambio y evolución en la forma de ver y crear el arte.
+                Nos enseñó que no hay reglas fijas y que la creatividad y la imaginación son fundamentales.
+                Gracias a este movimiento, los artistas pudieron expresar sus sentimientos y pensamientos de manera libre,
+                influyendo en todas las formas de arte que conocemos hoy en día. Valorar el Arte Moderno es entender la historia
+                y la cultura d
